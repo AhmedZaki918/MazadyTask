@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/bottomSheetText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
+        android:text="This is the bottom sheet!"
+        android:textSize="18sp" />
+
+    <TextView
+        android:background="@color/material_dynamic_neutral95"
+        android:id="@+id/bottomSheetText2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="This is the bottom sheet!"
+        android:textSize="18sp" />
+
+
+
+
+</LinearLayout>
