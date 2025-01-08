@@ -1,27 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="24dp">
+
 
     <TextView
-        android:id="@+id/bottomSheetText"
+        android:id="@+id/process_type_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="50dp"
-        android:text="This is the bottom sheet!"
-        android:textSize="18sp" />
+        android:textAlignment="center"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Process Type" />
 
-    <TextView
-        android:background="@color/material_dynamic_neutral95"
-        android:id="@+id/bottomSheetText2"
+
+    <ImageView
+        android:id="@+id/close_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/oval_shape"
+        android:contentDescription="@string/close_dialog"
+        android:padding="4dp"
+        android:src="@drawable/baseline_close"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/process_type_tv" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textField"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="This is the bottom sheet!"
-        android:textSize="18sp" />
+        android:layout_marginTop="16dp"
+        android:textColorHint="@color/medium_gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/close_iv"
+        app:startIconDrawable="@drawable/baseline_search"
+        app:startIconTint="@color/gray">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/search_tf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edittext_background"
+            android:hint="@string/search"
+            android:paddingStart="40dp"
+            android:paddingEnd="40dp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/options_rv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textField"
+        tools:itemCount="7"
+        tools:listitem="@layout/list_item_drop_down" />
 
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
