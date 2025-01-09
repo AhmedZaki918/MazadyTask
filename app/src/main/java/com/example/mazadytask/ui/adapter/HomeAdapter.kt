@@ -10,21 +10,27 @@ import com.example.mazadytask.ui.home.OnItemClicked
 class GenericAdapter<T>(
     private val itemList: List<T>,
     private val bindView: (View, T, Boolean) -> Unit,
-    private val onItemClicked: OnItemClicked
-) : RecyclerView.Adapter<GenericAdapter.GenericViewHolder<T>>() {
+    private val onItemClicked: OnItemClicked,
+    private val isSecondLayout: Boolean = false
+) : RecyclerView.Adapter<GenericAdapter.GenericViewHolder>() {
 
-    class GenericViewHolder<T>(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    override fun getItemViewType(position: Int): Int {
+        return if (isSecondLayout) 2 else 1
+    }
+
+    class GenericViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val view: View = itemView
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GenericViewHolder<T> {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GenericViewHolder {
+        val layoutId = if (viewType == 1) R.layout.list_item_drop_down // First layout
+        else R.layout.selectable_container // Second layout
         return GenericViewHolder(
-            LayoutInflater.from(parent.context)
-                .inflate(R.layout.list_item_drop_down, parent, false)
+            LayoutInflater.from(parent.context).inflate(layoutId, parent, false)
         )
     }
 
-    override fun onBindViewHolder(holder: GenericViewHolder<T>, position: Int) {
+    override fun onBindViewHolder(holder: GenericViewHolder, position: Int) {
         val item = itemList[position]
         val isLastItem = (position == itemList.size - 1)
 

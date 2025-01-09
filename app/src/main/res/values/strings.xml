@@ -3,4 +3,6 @@
     <string name="select_an_option">select an option</string>
     <string name="close_dialog">close dialog</string>
     <string name="search">Search</string>
+    <string name="main_category">Main Category</string>
+    <string name="sub_category">Sub Category</string>
 </resources>
